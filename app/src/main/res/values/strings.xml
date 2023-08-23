@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">BookQuiz</string>
+    <string name="play_button_text">PLAY</string>
+    <string name="title_text">match the cover of the book with its first line</string>
+</resources>
