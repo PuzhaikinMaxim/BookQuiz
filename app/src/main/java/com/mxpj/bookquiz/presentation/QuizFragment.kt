@@ -72,5 +72,6 @@ class QuizFragment: Fragment() {
         if(this::viewModel.isInitialized){
             viewModel.question.removeObservers(requireActivity())
         }
+        _binding = null
     }
 }

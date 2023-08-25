@@ -34,4 +34,9 @@ class TitleFragment: Fragment() {
             findNavController().navigate(R.id.action_titleFragment_to_quizFragment)
         }
     }
+
+    override fun onDetach() {
+        super.onDetach()
+        _binding = null
+    }
 }
