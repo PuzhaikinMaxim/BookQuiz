@@ -7,7 +7,7 @@ import com.mxpj.bookquiz.databinding.FragmentTitleBinding
 
 class MainActivity : AppCompatActivity() {
 
-    val binding by lazy {
+    private val binding by lazy {
         FragmentTitleBinding.inflate(layoutInflater)
     }
 
