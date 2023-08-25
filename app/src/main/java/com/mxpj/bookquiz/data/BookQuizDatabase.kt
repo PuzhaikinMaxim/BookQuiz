@@ -24,7 +24,7 @@ abstract class BookQuizDatabase: RoomDatabase() {
                     context.applicationContext,
                     BookQuizDatabase::class.java,
                     "book_quiz_database.db"
-                ).build()
+                ).createFromAsset("database/book_quiz_database.db").build()
                 INSTANCE = instance
                 return instance
             }

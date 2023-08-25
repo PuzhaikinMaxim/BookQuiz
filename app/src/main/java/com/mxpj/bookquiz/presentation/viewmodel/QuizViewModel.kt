@@ -10,7 +10,8 @@ import kotlinx.coroutines.launch
 import kotlin.random.Random
 
 class QuizViewModel(
-    private val getBookListUseCase: GetBookListUseCase
+    private val getBookListUseCase: GetBookListUseCase,
+    private val setQuizResultUseCase: SetQuizResultUseCase
 ): ViewModel() {
 
     private val availableBooks = ArrayList<Book>()
@@ -50,6 +51,7 @@ class QuizViewModel(
         answers.add(Answer(question.value!!, book))
         questionsLeft -= 1
         if(questionsLeft == 0){
+            setQuizResultUseCase(answers)
             _isGameOver.value = Unit
         }
         else{

@@ -23,32 +23,36 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:scaleType="fitCenter"
-            android:adjustViewBounds="true"
-            android:src="@drawable/ic_title_picture"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent=".45"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_answer_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="20dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/guideline"
+        tools:listitem="@layout/item_answer"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/guideline"
-        app:layout_constraintGuide_percent=".5"
+        app:layout_constraintGuide_percent=".8"
         android:orientation="horizontal"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginHorizontal="20dp"
-        app:layout_constraintTop_toBottomOf="@id/guideline"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_restart"
+        android:layout_width="300dp"
+        android:layout_height="65dp"
+        android:background="@drawable/bc_btn_play"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/restart_button_text"
+        android:textColor="@color/white"
+        android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:listitem="@layout/item_answer"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rv_answer_list" />
 </androidx.constraintlayout.widget.ConstraintLayout>

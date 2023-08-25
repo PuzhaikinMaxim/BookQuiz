@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.mxpj.bookquiz.R
 import com.mxpj.bookquiz.databinding.FragmentQuizBinding
 import com.mxpj.bookquiz.domain.GetBookListUseCase
+import com.mxpj.bookquiz.domain.SetQuizResultUseCase
 import com.mxpj.bookquiz.presentation.viewmodel.QuizViewModel
 import com.mxpj.bookquiz.presentation.viewmodel.factories.QuizViewModelFactory
 
@@ -40,9 +41,10 @@ class QuizFragment: Fragment() {
     private fun initializeViewModel() {
         val application = requireActivity().application as QuizApplication
         viewModel = ViewModelProvider(
-            requireActivity(),
+            this,
             QuizViewModelFactory(
-                GetBookListUseCase(application.dependencyContainer.bookRepository)
+                GetBookListUseCase(application.dependencyContainer.bookRepository),
+                SetQuizResultUseCase(application.dependencyContainer.bookQuizResultRepository)
             )
         )[QuizViewModel::class.java]
     }

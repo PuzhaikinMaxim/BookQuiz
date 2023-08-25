@@ -39,7 +39,7 @@
             android:layout_height="150dp"
             android:scaleType="centerCrop"
             tools:src="@drawable/kazaky"
-            tools:foreground="@drawable/bc_right_book"/>
+            tools:foreground="@drawable/fg_right_book"/>
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_book_3"
             android:layout_width="100dp"

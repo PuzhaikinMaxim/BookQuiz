@@ -9,7 +9,4 @@ interface BookDao {
 
     @Query("SELECT * FROM books")
     fun getBookList(): List<BookDbModel>
-
-    @Insert
-    fun addBooks(list: List<BookDbModel>)
 }
