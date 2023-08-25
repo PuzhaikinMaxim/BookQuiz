@@ -2,16 +2,14 @@ package com.mxpj.bookquiz.presentation.viewmodel.factories
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.mxpj.bookquiz.domain.AnswerQuestionUseCase
-import com.mxpj.bookquiz.domain.GetQuestionLdUseCase
+import com.mxpj.bookquiz.domain.GetBookListUseCase
 import com.mxpj.bookquiz.presentation.viewmodel.QuizViewModel
 
 class QuizViewModelFactory(
-    private val getQuestionLdUseCase: GetQuestionLdUseCase,
-    private val answerQuestionUseCase: AnswerQuestionUseCase
+    private val getBookListUseCase: GetBookListUseCase
 ): ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return QuizViewModel(getQuestionLdUseCase, answerQuestionUseCase) as T
+        return QuizViewModel(getBookListUseCase) as T
     }
 }

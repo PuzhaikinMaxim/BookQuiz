@@ -4,5 +4,5 @@ import com.mxpj.bookquiz.data.BookDbModel
 
 interface BookRepository {
 
-    suspend fun getAllBooks(): List<Book>
+    suspend fun getBookList(): List<Book>
 }
