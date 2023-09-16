@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.viewbinding.ViewBinding
 import com.mxpj.bookquiz.R
 import com.mxpj.bookquiz.databinding.FragmentQuizBinding
 import com.mxpj.bookquiz.domain.GetBookListUseCase
@@ -14,22 +15,12 @@ import com.mxpj.bookquiz.domain.SetQuizResultUseCase
 import com.mxpj.bookquiz.presentation.viewmodel.QuizViewModel
 import com.mxpj.bookquiz.presentation.viewmodel.factories.QuizViewModelFactory
 
-class QuizFragment: Fragment() {
+class QuizFragment() : ViewBindingFragment<FragmentQuizBinding>() {
 
-    private var _binding: FragmentQuizBinding? = null
-    private val binding: FragmentQuizBinding
-        get() = _binding ?: throw RuntimeException("FragmentQuizBinding is null")
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentQuizBinding
+        get() = FragmentQuizBinding::inflate
 
     private lateinit var viewModel: QuizViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentQuizBinding.inflate(inflater,container,false)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -74,6 +65,5 @@ class QuizFragment: Fragment() {
         if(this::viewModel.isInitialized){
             viewModel.question.removeObservers(requireActivity())
         }
-        _binding = null
     }
 }

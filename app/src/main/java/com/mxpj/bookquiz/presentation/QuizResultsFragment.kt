@@ -13,22 +13,12 @@ import com.mxpj.bookquiz.domain.GetQuizResultUseCase
 import com.mxpj.bookquiz.presentation.viewmodel.QuizResultsViewModel
 import com.mxpj.bookquiz.presentation.viewmodel.factories.QuizResultsViewModelFactory
 
-class QuizResultsFragment: Fragment() {
+class QuizResultsFragment : ViewBindingFragment<FragmentQuizResultsBinding>() {
 
-    private var _binding: FragmentQuizResultsBinding? = null
-    private val binding: FragmentQuizResultsBinding
-        get() = _binding ?: throw RuntimeException("FragmentQuizResultsBinding is null")
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentQuizResultsBinding
+        get() = FragmentQuizResultsBinding::inflate
 
     private lateinit var viewModel: QuizResultsViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentQuizResultsBinding.inflate(layoutInflater,container,false)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -59,10 +49,5 @@ class QuizResultsFragment: Fragment() {
         binding.btnRestart.setOnClickListener {
             findNavController().navigate(R.id.action_quizResultsFragment_to_quizFragment)
         }
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        _binding = null
     }
 }

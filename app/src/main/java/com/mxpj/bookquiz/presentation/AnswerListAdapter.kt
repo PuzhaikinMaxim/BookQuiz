@@ -38,13 +38,11 @@ class AnswerListAdapter(context: Context): RecyclerView.Adapter<AnswerListAdapte
             for((index, book) in item.question.books.withIndex()){
                 bookImages[index].setImageResource(book.imageResource)
                 if(item.selectedBook == book){
-                    when(item.question.rightBook == item.selectedBook){
+                    bookImages[index].foreground = when(item.question.rightBook == item.selectedBook){
                         true -> {
-                            bookImages[index].foreground =
                                 AppCompatResources.getDrawable(resourceContext!!, R.drawable.fg_right_book)
                         }
                         false -> {
-                            bookImages[index].foreground =
                                 AppCompatResources.getDrawable(resourceContext!!, R.drawable.fg_wrong_book)
                         }
                     }

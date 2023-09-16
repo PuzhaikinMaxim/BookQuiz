@@ -9,20 +9,10 @@ import androidx.navigation.fragment.findNavController
 import com.mxpj.bookquiz.R
 import com.mxpj.bookquiz.databinding.FragmentTitleBinding
 
-class TitleFragment: Fragment() {
+class TitleFragment() : ViewBindingFragment<FragmentTitleBinding>() {
 
-    private var _binding: FragmentTitleBinding? = null
-    private val binding: FragmentTitleBinding
-        get() = _binding ?: throw RuntimeException("FragmentTitleBinding is null")
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentTitleBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentTitleBinding
+        get() = FragmentTitleBinding::inflate
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,10 +23,5 @@ class TitleFragment: Fragment() {
         binding.btnPlay.setOnClickListener {
             findNavController().navigate(R.id.action_titleFragment_to_quizFragment)
         }
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        _binding = null
     }
 }
